@@ -1,4 +1,4 @@
-puzzle_input = open('day1_puzzle_input.txt', 'r').read().splitlines()
+puzzle_input = open('C:\Repos\\advent-of-code-2023\Day_1\day1_puzzle_input.txt', 'r').read().splitlines()
 
 result = 0
 for line in puzzle_input:
