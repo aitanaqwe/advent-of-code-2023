@@ -10,7 +10,7 @@ def get_first_and_last(line):
 
     for i in range(len(line)) :
         if line[i].isdigit():
-            if i < first_index:
+            if i <= first_index:
                 first_value = line[i]
                 first_index = i
             if i >= last_index:
@@ -20,7 +20,7 @@ def get_first_and_last(line):
     for digit in also_digits:
             if digit in line:
                 i = line.find(digit)
-                if i < first_index:
+                if i <= first_index:
                     first_value = also_digits.index(digit) + 1
                     first_index = i
                 elif i >= last_index:
