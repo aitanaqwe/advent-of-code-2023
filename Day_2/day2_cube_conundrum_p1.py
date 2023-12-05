@@ -4,10 +4,6 @@ puzzle_input = open('C:\Repos\\advent-of-code-2023\Day_2\day2_puzzle_input.txt',
 
 MAX_VALUES = {'red': 12, 'green': 13, 'blue': 14}
 
-max_red = 12
-max_green = 13
-max_blue = 14
-
 possible_games_sum = 0 
 
 def get_possible_games(game_match, cube_matches):
