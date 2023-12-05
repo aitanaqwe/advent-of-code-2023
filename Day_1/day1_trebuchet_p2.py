@@ -1,3 +1,5 @@
+import re
+
 puzzle_input = open('C:\Repos\\advent-of-code-2023\Day_1\day1_puzzle_input.txt', 'r').read().splitlines()
 
 also_digits = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
@@ -19,13 +21,14 @@ def get_first_and_last(line):
               
     for digit in also_digits:
             if digit in line:
-                i = line.find(digit)
-                if i <= first_index:
-                    first_value = also_digits.index(digit) + 1
-                    first_index = i
-                elif i >= last_index:
-                    last_value = also_digits.index(digit) + 1
-                    last_index = i
+                indexes = [match.start() for match in re.finditer(digit, line)]
+                for i in indexes:
+                    if i <= first_index:
+                        first_value = also_digits.index(digit) + 1
+                        first_index = i
+                    elif i >= last_index:
+                        last_value = also_digits.index(digit) + 1
+                        last_index = i
                     
     return first_value, last_value
 
