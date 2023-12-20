@@ -29,24 +29,20 @@ for i, line in enumerate(puzzle_input):
     ast_indices = [ast.start() for ast in asts]
 
     for ast_indice in ast_indices:
-        part_sum = 0
         part_list = []
         for string in split_input[i-1][ast_indice-1:ast_indice+2]:
             if string.isnumeric():
                 if int(string) not in part_list:
                     part_list.append(int(string))
-                    part_sum += 1
         for string in split_input[i][ast_indice-1:ast_indice+2]:
             if string.isnumeric():
                 if int(string) not in part_list:
                     part_list.append(int(string))
-                    part_sum += 1
         for string in split_input[i+1][ast_indice-1:ast_indice+2]:
             if string.isnumeric():
                 if int(string) not in part_list:
                     part_list.append(int(string))
-                    part_sum += 1
-        if part_sum == 2:
+        if len(part_list) == 2:
             result += math.prod(part_list)
 
 print(result)
