@@ -1,17 +1,22 @@
-puzzle_input = open('C:\Repos\\advent-of-code-2023\Day_4\day4_test_puzzle_input.txt', 'r').read().splitlines()
+import re
 
-lines = [line.strip().split('|') for line in puzzle_input]
+puzzle_input = open('C:\Repos\\advent-of-code-2023\Day_4\day4_puzzle_input.txt', 'r').read().splitlines()
 
-# Convert the string representations of numbers to integers
-numbers_before_bar = [[int(num) for num in card.split()] for card in lines]
+result = 0
 
-# Print the result
-print("Numbers before the bar:")
-for card_numbers in numbers_before_bar:
-    print(card_numbers)
+for line in puzzle_input:
+    potencia = 0
+    card_worth = 0
 
-# If needed, you can also obtain numbers after the bar in a similar way
-numbers_after_bar = [[int(num) for num in card.split()] for card in lines]
-print("\nNumbers after the bar:")
-for card_numbers in numbers_after_bar:
-    print(card_numbers)
+    winners = [int(num) for num in line.split(':')[1].split('|')[0].split()]
+    numbers = [int(num) for num in line.split(':')[1].split('|')[1].split()]
+
+    for winner in winners:
+        if winner in numbers:
+            potencia += 1
+    
+    if potencia != 0:
+        card_worth = 2**(potencia-1)
+    result += card_worth
+
+print (result)
