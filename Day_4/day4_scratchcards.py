@@ -8,15 +8,21 @@ for line in puzzle_input:
     potencia = 0
     card_worth = 0
 
-    winners = [int(num) for num in line.split(':')[1].split('|')[0].split()]
-    numbers = [int(num) for num in line.split(':')[1].split('|')[1].split()]
+    # winners = [int(num) for num in line.split(':')[1].split('|')[0].split()]
+    # numbers = [int(num) for num in line.split(':')[1].split('|')[1].split()]
+    winners, numbers = [map(int, part.split()) for part in line.split(':')[1].split('|')]
 
-    for winner in winners:
-        if winner in numbers:
-            potencia += 1
-    
+    # for winner in winners:
+    #     if winner in numbers:
+    #         potencia += 1
+    common_numbers = set(winners) & set(numbers)
+    potencia = len(common_numbers)
+
+    # if potencia != 0:
+    #     card_worth = 2**(potencia-1)
     if potencia != 0:
-        card_worth = 2**(potencia-1)
+        card_worth = 1 << (potencia - 1)
+    
     result += card_worth
 
 print (result)
